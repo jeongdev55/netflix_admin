@@ -1,0 +1,387 @@
+1. 데이터베이스 생성(계정 생성)
+- Run SQL Command Line 실행
+- connect sys/oracle as sysdba
+- create user netflix identified by netflix;
+- alter user netflix identified by netflix account unlock;
+- grant connect,resource to netflix;
+
+
+2. 테이블 생성
+
+1) 배우 테이블 (actor)
+sql 문법 (전체 복사 사용)
+
+  CREATE TABLE "NETFLIX"."ACTOR" 
+   (	"ID" NUMBER(5,0) NOT NULL ENABLE, 
+	"NAME" VARCHAR2(30 BYTE) NOT NULL ENABLE, 
+	 CONSTRAINT "ACTOR_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+  
+ 데이터 삽입 
+ -데이블 접속 >> 상단 탭 [데이터] 선택 >>그 아래 탭 3번째 +그림으로 데이터 행 추가(데이터 수만큼) >> 아래 전체 붙여넣기
+ id    name
+ 2000	송강호
+2001	정우성
+2002	곽도원
+2003	최민식
+2004	박신혜
+2006	엄정아
+2007	김윤석
+2008	김민정
+2009	박희순
+2010	마동석
+2011	김태리
+2012	박정민
+2013	정해인
+2014	조정석
+2015	유연석
+2016	정경호
+2017	이지은
+2018	여진구
+2019	신정근
+2020	김동희
+2021	정다빈
+2022	박주현
+2023	공유
+2024	김고은
+2025	이동욱
+2026	이정재
+2027	박해수
+2028	위하준
+2029	주지훈
+2030	류승룡
+2031	배두나
+2033	임윤아
+2034	고두심
+2036	이하늬
+2037	진선규
+2038	송중기
+2040	로버트 드니로
+2041	앤 해서웨이
+2042	러네이루소
+2043	크리스 헴스워스
+2044	루드락시 재스왈
+2045	란딥 후다
+2046	태런 애저턴
+2047	제이미 폭스
+2048	벤 멘덜슨
+2049	유민상
+2050	김준현
+2051	문세윤
+2052	강호동
+2053	이수근
+2054	이상민
+2055	이덕화
+2056	이경규
+2057	박진철
+2058	김성주
+2059	장동민
+2060	김희철
+
+
+2) 카테고리 테이블 (category)
+sql 문법 (전체 복사 사용)
+
+  CREATE TABLE "NETFLIX"."CATEGORY" 
+   (	"CATEGORY_ID" NUMBER(10,0) NOT NULL ENABLE, 
+	"CATEGORY_NAME" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
+	 CONSTRAINT "CATEGORY_PK" PRIMARY KEY ("CATEGORY_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+  
+ 데이터 삽입 
+ -데이블 접속 >> 상단 탭 [데이터] 선택 >>그 아래 탭 3번째 +그림으로 데이터 행 추가(데이터 수만큼) >> 아래 전체 붙여넣기
+ id    name
+500	영화
+501	드라마
+502	예능
+
+
+3) 콘텐츠 테이블 (content)
+sql 문법 (전체 복사 사용)
+
+  CREATE TABLE "NETFLIX"."CONTENT" 
+   (	"CONTENT_ID" VARCHAR2(20 BYTE), 
+	"CONTENT_TITLE" VARCHAR2(100 BYTE) NOT NULL ENABLE, 
+	"CONTENT_RATING" NUMBER(20,0), 
+	"CONTENT_MAKING" NUMBER(20,0), 
+	"SUMMARY" VARCHAR2(500 BYTE), 
+	"RUNNINGTIME" NUMBER(10,0), 
+	"CATEGORY_NAME" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
+	"GENRE_NAME" VARCHAR2(100 BYTE), 
+	"DIRECTOR_NAME" VARCHAR2(100 BYTE), 
+	"ACTOR_NAME" VARCHAR2(100 BYTE), 
+	"COUNTRY" VARCHAR2(20 BYTE), 
+	"IS_MAIN" VARCHAR2(5 BYTE) NOT NULL ENABLE, 
+	"IMAGEQUALITY" VARCHAR2(20 BYTE), 
+	"CHARACTERISTIC" VARCHAR2(100 BYTE), 
+	"ENGLISH_TITLE" VARCHAR2(30 BYTE) NOT NULL ENABLE, 
+	 CONSTRAINT "CONTENT_PK" PRIMARY KEY ("CONTENT_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+  
+ 데이터 삽입 
+ -데이블 접속 >> 상단 탭 [데이터] 선택 >>그 아래 탭 3번째 +그림으로 데이터 행 추가(데이터 수만큼) >> 아래 전체 붙여넣기
+CONTENT_ID CONTENT_TITLE CONTENT_RATING CONTENT_MAKING SUMMARY RUNNINGTIME CATEGORY_NAME GENRE_NAME DIRECTOR_NAME ACTOR_NAME COUNTRY IS_MAIN IMAGEQUALITY CHARACTERISTIC ENGLISH_TITLE 
+1002	호텔델루나	15	2019	서울 도심에 수상한 호텔이 있다. 천년 영업에 숙박한 사람이 없다. 왜? 산 사람은 안 받으니까. 귀신만 묵는 그곳에 인간 지배인이 왔다. 알고 보면 심약한 이 남자, 고객 응대 잘 해낼까? 외모와 달리 괴팍한 사장은 어찌 감당하누.	100	드라마	홍길동	TV 프로그램/판타지	이지은	한국	Y	HD	설렘주의	hotel
+1001	슬기로운 의사생활+	15	2021	탄생과 죽음이 공존하는, 인생의 축소판이라고 불리는 병원에서 특별한 하루하루를 살아가는 사람들의 이야기를 그린 드라마	100	드라마	홍길동	메디컬 TV 시리즈	조정석	한국	Y	HD	힐링	doctor
+1003	인간수업	18	2020	학교 안에서는 모범생, 학교 밖에서는 영리한 범죄자. 그의 비밀스러운 이중생활은 완벽했다. 같은 반 친구가 그의 위험한 사업에 관심을 갖기 전까지는.	100	드라마	홍길동	TV 프로그램/범죄	김동희	한국	Y	HD	다크	human
+1004	도깨비	15	2016	신부를 찾아야 죽을 수 있는 남자. 불멸의 고통에 힘겹던 어느 날, 신부라고 주장하는 여학생이 나타났다. 대책 없이 그를 소환하고 대책 없이 삶에 파고드는 소녀. 정녕 신부를 만난 것이냐. 그럼 이제 소멸할 수 있는 것이냐.	100	드라마	홍길동	TV 프로그램/판타지	공유	한국	Y	HD	설렘주의	goblin
+1005	오징어게임	18	2021	빚더미에 짓눌린 중년 남자 기훈. 그가 일확천금을 노리고 의문의 게임에 뛰어든다. 그런데 게임이 시작되자마자 눈 앞에 펼쳐진 것은, 보고도 믿기 힘든 경악과 공포의 현장.	100	드라마	홍길동	한국 드라마	이정재	한국	Y	HD	긴장감 넘치는	squid_game
+1006	킹덤	18	2020	비극과 배신이 삶을 덮친다. 기이하고 불길한 뭔가를 발견한다. 한순간에 가족과 동족을 잃은 여인. 오직 복수를 꿈꾸며 살아온 그녀가 짙은 어둠을 마주한다. 《킹덤》의 스페셜 에피소드.	100	드라마	홍길동	웹툰 원작 한국드라마	주지훈	한국	Y	HD	폭력	kingdum
+1007	엑시트	12	2019	도시 한복판에 독가스가 유출됐다! 아수라장 속에서 대학 시절 산악부 경험을 살려 탈출을 돕는 두 청년. 짠 내 나는 지질한 청춘은 잠시 잊어라. 오늘만큼은 세상을 구원할 영웅이니까.	100	영화	홍길동	액션& 어드벤처	조정석	한국	Y	HD	엉뚱 기발	exit
+1008	극한직업	15	2019	범죄 조직 일당을 감시하기 위해 마약반 형사들이 위장 창업으로 치킨집을 열었다. 근데 웬일? 맛있다는 입소문을 타며 연일 문전성시를 이룬다. 드디어 숨은 재능을 발견한 건가. 낮에는 치킨, 밤에는 잠복. 이곳이 진정한 수사 맛집이다!	100	영화	홍길동	액션& 어드벤처	류승룡	한국	Y	HD	황당한 이야기	extreme_jop
+1009	승리호	12	2021	우주에서 쓰레기를 주우며 산다. 꿈은 아득하기만 하다. 2092년, 기댈 곳 없는 낙오자 넷. 그들이 천진한 인간형 로봇을 손에 넣는다. 때가 왔다, 위험한 거래를 개시한다!	100	영화	홍길동	영화/SF	송중기	한국	Y	HD	흥미진진	space_sweeper
+1010	인턴	12	2015	뜨거운 열정으로 단기간에 회사를 키워낸 30대 열혈 여성 CEO. 사별과 은퇴를 겪고 공허한 일상을 보내다가 새내기로 입사한 70세 남성 인턴. 문제없을까, 이 어색한 조합.	100	영화	홍길동	미국 영화	로버트 드니로	미국	Y	HD	힐링	intern
+1011	익스트랙션	18	2020	어떤 일에도 쉽게 동요하지 않는 냉철한 용병. 그가 살아남기 위해 자신을 끊임없이 성찰한다. 마약왕의 납치된 아들을 구하러 간 방글라데시에서 그 모든 것이 시작됐다.	100	영화	홍길동	미국 영화	크리스 헴스워스	미국	Y	HD	폭력	extraction
+1012	후드	12	2018	권력층의 부패로 얼룩진 중세 영국. 전장에서 죽은 남자가 돌아왔다는 소문과 함께, 부자들의 돈이 사라지기 시작한다. 악의 권력에 맞서 민중을 지키고, 부조리를 바로잡는 의적 로빈 후드. 시대가 기다려온 영웅이 온다, 불꽃처럼.	100	영화	홍길동	미국 영화	태런 애저턴	미국	Y	HD	-	hood
+1013	맛있는 녀석들	15	2021	맛있게 먹을 줄 아는 자에겐 모든 곳이 맛집이다. 맛없는 것도 맛있게, 맛있는 건 더 맛있게, 먹었다 하면 제대로 먹는 개그맨 4인방. 먹방의 역사를 새로 쓸 그들이 온다.	100	예능	홍길동	TV 프로그램/음식 & 여행	유민상	한국	Y	HD	위트	delicious_guys
+1014	아는형님	15	2021	아재 감성이 물씬 풍기는 출연진. 하지만 고등학생이라는 설정 하에 스타 전학생을 매주 맞이하며 순발력 넘치는 유머와 몸개그로 대결을 펼친다.	100	예능	홍길동	TV예능 버라이어티	강호동	한국	Y		푼수 캐릭터	knowing_bros
+1015	도시어부	12	2021	도시를 떠나자, 푸르른 바다로 가자. 월척이 있는 곳이라면 그 어디든 달려가리라! 낚시에 미친 자들과 함께하는 리얼 낚시 여행 버라이어티. 함께 떠날 준비 되셨습니까?	100	예능	홍길동	경쟁 리얼리티 TV	이덕화	한국	Y		위트	fisherman
+1016	하트시그널3	15	2020	한 지붕 아래 살게 된 여덟 남녀. 이들은 한 달 동안 설레는 인연을 찾을 수 있을까? 연예인과 전문가들이 남녀의 심리를 추리해 사랑과 실연, 로맨스의 향방을 예측한다.	100	예능	홍길동	결혼식 & 로맨스 리얼리티 TV	이상민	한국	Y	HD	설렘주의	signal
+1017	강철부대	15	2021	최강과 최강이 맞붙으면 어떤 일이 벌어질까. 특전사, 해병대수색대 등 대한민국 최고 특수부대 팀들이 격돌한다. 각 부대 출신 최정예 예비역으로 구성된 팀들이 벌이는 승부. 상금은 물론 각 부대의 명예가 달려 있다! 최후의 강철부대는?	100	예능	홍길동	경쟁 리얼리티 TV	김성주	한국	Y		흥미진진	steel
+1018	미스터트롯	15	2020	차세대 트로트 킹은 누구? 트로트계의 남자 스타를 발굴하기 위한 프로젝트가 시작된다. 현직 가수부터 수학 강사, 초등학생까지. 트로트에 살고 트로트에 죽는 100여 팀의 참가자들. 1등이 되려면 연예인 심사 위원의 마음을 사로잡아라.	100	예능	홍길동	경쟁 리얼리티 TV	김성주	한국	Y		힐링	mr
+
+
+4) 감독 테이블 (director)
+sql 문법 (전체 복사 사용)
+
+  CREATE TABLE "NETFLIX"."DIRECTOR" 
+   (	"ID" NUMBER(10,0) NOT NULL ENABLE, 
+	"NAME" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
+	 CONSTRAINT "DIRECTOR_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+  
+ 데이터 삽입 
+ -데이블 접속 >> 상단 탭 [데이터] 선택 >>그 아래 탭 3번째 +그림으로 데이터 행 추가(데이터 수만큼) >> 아래 전체 붙여넣기
+ id    name
+300	이장호
+301	김철수
+302	박진표
+303	양우석
+304	이재규
+305	이원태
+306	윤종빈
+307	권수경
+308	장준환
+309	매트 리브스
+310	뤽 베송
+311	바즈 루어만
+312	이권태
+
+5) 장르 테이블 (genre)
+sql 문법 (전체 복사 사용)
+
+  CREATE TABLE "NETFLIX"."GENRE" 
+   (	"ID" NUMBER(10,0) NOT NULL ENABLE, 
+	"NAME" VARCHAR2(30 BYTE) NOT NULL ENABLE, 
+	 CONSTRAINT "GENRE_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+  
+ 데이터 삽입 
+ -데이블 접속 >> 상단 탭 [데이터] 선택 >>그 아래 탭 3번째 +그림으로 데이터 행 추가(데이터 수만큼) >> 아래 전체 붙여넣기
+ id    name
+100	추리소설
+101	스릴러
+102	공포
+103	미국 영화
+104	판타지
+105	무협
+106	게임
+107	로맨스
+108	다큐
+109	전쟁
+110	코미디
+111	멜로
+112	SF
+113	스포츠
+114	교육
+115	독립
+116	뮤지컬
+117	시트콤
+118	청춘
+119	웹드라마
+120	감동적
+121	한국 드라마
+122	로맨틱
+123	어드벤처
+124	액션
+125	리얼리티 TV
+126	시대물
+127	도서 원작
+128	정치
+129	로맨스 리얼리티 TV
+
+
+6) 매니저 테이블 (manager)
+sql 문법 (전체 복사 사용)
+
+  CREATE TABLE "NETFLIX"."MANAGER" 
+   (	"EMAIL" VARCHAR2(50 BYTE) NOT NULL ENABLE, 
+	"PASS" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
+	"POSITION" VARCHAR2(50 BYTE) NOT NULL ENABLE, 
+	"NAME" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
+	"ID" NUMBER(10,0) NOT NULL ENABLE, 
+	 CONSTRAINT "MANAGER_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+  
+ 데이터 삽입 
+ -데이블 접속 >> 상단 탭 [데이터] 선택 >>그 아래 탭 3번째 +그림으로 데이터 행 추가(데이터 수만큼) >> 아래 전체 붙여넣기
+ id    name
+3	admin11@netflix.com	123	최고 관리자	최부장
+4	admin@netflix.com	123	중간 관리자	김사원
+2	admin2@netflix.com	123	최고 관리자	하대리
+
+7) 멤버 테이블 (member)
+sql 문법 (전체 복사 사용)
+
+  CREATE TABLE "NETFLIX"."MEMBER" 
+   (	"EMAIL" VARCHAR2(50 BYTE) NOT NULL ENABLE, 
+	"PASS" VARCHAR2(60 BYTE) NOT NULL ENABLE, 
+	"NICKNAME" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
+	"PHONENUMBER" VARCHAR2(15 BYTE) NOT NULL ENABLE, 
+	"AGE" NUMBER(3,0) NOT NULL ENABLE, 
+	"GENDER" CHAR(1 BYTE) NOT NULL ENABLE, 
+	"JOIN_DATE" DATE NOT NULL ENABLE, 
+	"CONFIRM" CHAR(1 BYTE) NOT NULL ENABLE, 
+	"TICKET_ID" NUMBER(20,0) NOT NULL ENABLE, 
+	 CONSTRAINT "MEMBER_PK" PRIMARY KEY ("EMAIL", "TICKET_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE, 
+	 CONSTRAINT "MEMBER_FK1" FOREIGN KEY ("TICKET_ID")
+	  REFERENCES "NETFLIX"."TICKET" ("TICKET_ID") ENABLE
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+  
+ 데이터 삽입 
+ -데이블 접속 >> 상단 탭 [데이터] 선택 >>그 아래 탭 3번째 +그림으로 데이터 행 추가(데이터 수만큼) >> 아래 전체 붙여넣기
+EMAIL PASS NICKNAME PHONENUMBER AGE GENDER JOIN_DATE CONFIRM TICKET_ID
+wkdgowjd13@naver.com	123	해정	23	010-8482-9234	W	21/06/16	104	Y
+dklad@naver.com	123	김미자	53	010-4547-4557	W	21/02/22	102	Y
+sda@naver.com	123	가가가	24	010-2228-7575	W	21/09/11	102	Y
+wk23dslad@naver.com	123	고길동	22	010-2333-2617	M	21/02/22	104	Y
+ghdfhdf;	123123	길동	35	010-2222-3333	M	21/03/19	106	Y
+eqwgfhjghfqw;	123123	길동	35	010-2222-3333	M	21/10/19	106	Y
+fgjhfghj;	123123	길동	35	010-2222-3333	M	21/09/19	104	Y
+fdghgdfgh;	123123	수박	44	010-2232-4123	M	21/11/11	106	Y
+eqyyhjghfqw;	123123	길동	35	010-2222-3333	M	21/04/19	106	Y
+fgjhyyyfghj;	123123	하하	35	010-2222-3333	M	21/06/19	104	Y
+fdghghfgdfgh;	123123	수박	44	010-2232-4123	M	21/12/11	106	Y
+eqyyhasdjghfqw;	123123	길동	35	010-2222-3333	M	21/05/19	106	Y
+gggg	123123	로이	11	010-2222-7545	W	21/07/25	104	y
+sadas@naver.com	123	리수	12	010-1546-4651	M	21/05/09	106	Y
+dksla@naver.com	123	하이	44	010-4444-7845	W	21/09/01	104	Y
+ssda@naver.com	123	김기리	45	010-4444-5555	M	21/08/15	106	Y
+asd@saas	123	한효주	12	010-1111-2222	M	21/12/09	102	Y
+sda@amsda	123	sds	21	010-4548-4848	M	21/04/03	102	N
+didididi@didididi	123	ds	44	010-4577-4877	W	21/01/26	102	Y
+jjo1dkdad@gmail.com	123	김혜수	56	010-6123-4557	W	21/03/22	102	Y
+d3sdtqwd@gmail.com	123	최정묵	28	010-7345-4557	M	21/04/22	102	Y
+ad2attqwed@gmail.com	123	김수민	33	010-7875-4557	W	21/05/22	104	Y
+ww5egs@naver.com	123	최혜지	41	010-4547-5757	W	21/06/22	102	Y
+hha1sre@naver.com	123	김동현	22	010-8834-1117	M	21/07/22	106	Y
+yvv5sde@gmail.com	123	김한길	25	010-9134-8837	M	21/08/22	106	Y
+dya23sewq@naver.com	123	박수자	31	010-9934-4557	W	21/08/22	102	Y
+sdgsdd@gmail.com	123	복남이	26	010-5184-4557	M	21/09/22	106	Y
+dhhsdeq@naver.com	123	허진수	22	010-3453-4557	W	21/09/22	104	Y
+d123ad@naver.com	123	강형욱	23	010-6543-2333	M	21/01/22	104	Y
+w1ka23dslad@naver.com	123	고길동	22	010-2333-2617	M	21/02/22	104	Y
+jjo1SAddkdad@gmail.com	123	김혜수	56	010-6123-4557	W	21/03/22	102	Y
+d3Dsdtgqwd@gmail.com	123	최정묵	28	010-7345-4557	M	21/04/22	102	Y
+wwsa5asdaegs@naver.com	123	최혜지	41	010-4547-5757	W	21/06/22	102	Y
+hhaasd1sre@naver.com	123	김동현	22	010-8834-1117	M	21/07/22	106	Y
+yvv5sdsde@gmail.com	123	김한길	25	010-9134-8837	M	21/08/22	106	Y
+dyf1aas23sewq@naver.com	123	박수자	31	010-9934-4557	W	21/08/22	102	Y
+sdsdgsdd@gmail.com	123	복남이	26	010-5184-4557	M	21/09/22	106	Y
+dhhsddeq@naver.com	123	허진수	22	010-3453-4557	W	21/09/22	104	Y
+d12243ad@naver.com	123	강형욱	23	010-6543-2333	M	21/11/22	104	Y
+w1ffka2413dslad@naver.com	123	고길동	22	010-2333-2617	M	21/02/22	106	Y
+jjo1S12dkdad@gmail.com	123	김혜수	56	010-6123-4557	W	21/11/22	102	Y
+d3Dhsdqwd@gmail.com	123	최정묵	28	010-7345-4557	M	21/12/22	102	Y
+aqwewed@gmail.com	123	김수민	33	010-7875-4557	W	21/05/22	104	Y
+wwasd5asdaegs@naver.com	123	최혜지	41	010-4547-5757	W	21/06/22	102	Y
+hhag1sre@naver.com	123	김동현	22	010-8834-1117	M	21/07/22	106	Y
+yvv5asdsde@gmail.com	123	김한길	25	010-9134-8837	M	21/08/22	106	Y
+dyfasds23sewq@naver.com	123	박수자	31	010-9934-4557	W	21/12/22	102	Y
+sdasddd@gmail.com	123	복남이	26	010-5184-4557	M	21/12/22	106	Y
+
+8) 티켓 테이블 (director)
+sql 문법 (전체 복사 사용)
+
+  CREATE TABLE "NETFLIX"."TICKET" 
+   (	"TICKET_ID" NUMBER(20,0) NOT NULL ENABLE, 
+	"TICKET_NAME" VARCHAR2(50 BYTE) NOT NULL ENABLE, 
+	"TICKET_LIMITED" NUMBER(5,0) NOT NULL ENABLE, 
+	"TICKET_PRICE" NUMBER(20,0) NOT NULL ENABLE, 
+	"TICKET_CONTENT" VARCHAR2(200 BYTE) NOT NULL ENABLE, 
+	"IS_MAIN" VARCHAR2(5 BYTE), 
+	 CONSTRAINT "TICKET_PK" PRIMARY KEY ("TICKET_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+
+   COMMENT ON COLUMN "NETFLIX"."TICKET"."IS_MAIN" IS '메인노출여부';
+  
+ 데이터 삽입 
+ -데이블 접속 >> 상단 탭 [데이터] 선택 >>그 아래 탭 3번째 +그림으로 데이터 행 추가(데이터 수만큼) >> 아래 전체 붙여넣기
+TICKET_ID TICKET_NAME TICKET_LIMITED TICKET_PRICE TICKET_CONTENT IS_MAIN
+106	프리미엄	4	14500	UHD(4K)및 HDR로 넷플릭스 최고 화질 제공. 스마트폰,태블릿,컴퓨터 또는 TV로 시청.  Y
+102	베이식	1	9500	SD(408P)로 좋은 화질 제공, 스마트폰,태블릿,컴퓨터 또는 TV로 시청.  Y
+104	스탠다드	2	12500	풀 HD(1080p)로 뛰어난 화질 제공. 스마트폰, 태블릿, 컴퓨터 또는 TV로 시청.  Y

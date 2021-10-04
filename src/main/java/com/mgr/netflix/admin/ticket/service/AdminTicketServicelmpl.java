@@ -19,6 +19,21 @@ public class AdminTicketServicelmpl implements AdminTicketService{
 	public List<AdminTicketVO> getAllTicket(HashMap<String, Object> map) {
 		return TicketDAO.getAllTicket(map);
 	}
+
+	@Override
+	public int insertTicket(AdminTicketVO vo) {
+		return TicketDAO.insertTicket(vo);
+	}
+
+	@Override
+	public int deleteTicket(AdminTicketVO vo) {
+		return TicketDAO.deleteTicket(vo);
+	}
+
+	@Override
+	public int modifyTicket(AdminTicketVO vo) {
+		return TicketDAO.modifyTicket(vo);
+	}
 	
 	
 

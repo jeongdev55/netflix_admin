@@ -9,11 +9,31 @@
 		<result property="ticket_limited" column="ticket_limited" />
 		<result property="ticket_price" column="ticket_price" />
 		<result property="ticket_content" column="ticket_content" />
+		<result property="is_main" column="is_main" />
 	</resultMap>
 
 
-	<select id="getAllticket" parameterType="hashMap"	resultMap="TicketResult">
+	<select id="getAllTicket" parameterType="hashMap"	resultMap="TicketResult">
 	SELECT *
 	from ticket
+	order by ticket_id
 	</select>
+	
+	<insert id="insertTicket" parameterType="AdminTicketVO" >
+		insert into ticket(ticket_id,ticket_name,ticket_limited,ticket_price,ticket_content,is_main)
+		values(#{ticket_id}, #{ticket_name}, #{ticket_limited}, #{ticket_price}, #{ticket_content}, #{is_main})
+	</insert>
+
+	<delete id="deleteTicket" parameterType="AdminTicketVO" >
+		delete from ticket where ticket_id=#{ticket_id}
+	</delete>
+	
+	<update id="modifyTicket" parameterType="AdminTicketVO" >
+		update ticket
+		set 
+		ticket_id=#{ticket_id}, ticket_name=#{ticket_name},
+		ticket_limited=#{ticket_limited},ticket_price=#{ticket_price},
+		ticket_content=#{ticket_content},is_main=#{is_main}
+		where ticket_id=#{ticket_id}
+	</update>
 </mapper>

@@ -74,7 +74,7 @@
                             </a>
                             <div class="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">이용권</a>
+                                    <a class="nav-link" href="ticket.ado">이용권</a>
                                     <a class="nav-link" href="#">판매</a>
                                 </nav>
                             </div>

@@ -6,8 +6,22 @@ public class AdminTicketVO {
 	private int ticket_limited;
 	private int ticket_price;
 	private String ticket_content;
+	private String is_main;
+	private int count;
 
 	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	public String getIs_main() {
+		return is_main;
+	}
+	public void setIs_main(String is_main) {
+		this.is_main = is_main;
+	}
 	public String getTicket_id() {
 		return ticket_id;
 	}
