@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Ticket">
+	<resultMap type="AdminTicketVO" id="TicketResult">
+		<result property="ticket_id" column="ticket_id" />
+		<result property="ticket_name" column="ticket_name" />
+		<result property="ticket_limited" column="ticket_limited" />
+		<result property="ticket_price" column="ticket_price" />
+		<result property="ticket_content" column="ticket_content" />
+	</resultMap>
+
+
+	<select id="getAllticket" parameterType="hashMap"	resultMap="TicketResult">
+	SELECT *
+	from ticket
+	</select>
+</mapper>

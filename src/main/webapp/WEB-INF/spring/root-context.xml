@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+
+	
+
+	<!-- 데이터 베이스 연결 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+	<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/> 
+	<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe" /> 
+	<property name="username" value="netflix"/> 
+	<property name="password" value="netflix"/> 
+	</bean>
+	
+	<!-- SqlSessionFactory -->
+	<!-- 데이터베이스를 객체로 받아서 연결해서 사용하겠다!
+			마이바티스 사용하기 위한 필수 객체!!  -->
+<bean id="sqlSessionFactory"
+		               class="org.mybatis.spring.SqlSessionFactoryBean"> 
+	<property name="dataSource" ref="dataSource" />
+	<property name="configLocation" value="classpath:/mybatis-config.xml" /> <!-- 환경설정 파일 -->
+	<property name="mapperLocations" value="classpath:/mapper/*.xml" /><!-- 매퍼 파일 -->
+	<!-- configLocation :MyBatis 환경설정 파일(src/main/resources) -->
+	<!-- mapperLocation : 매퍼파일은 어디에 넣을까(src/main/resources/mapper/*.xml) -->
+	</bean>
+	
+	<!-- SqlSessionTemplate :spring-mybatis연동, sqlSession 생성에 관여 -->
+<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" > 
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" /> 
+	</bean>
+	
+	
+	<!-- mapper interface : mapping파일의 sql call을 위한 interface 
+		  즉, mapping파일의 sql을 java interface로 호출하게 해줌(cf.getMapper())-->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"> 
+		<property name="basePackage" value="com.mgr.netflix.admin" /> 
+	</bean>
+		<!-- 이 패키지 아래 모든 interface가 mapper interface로 인식 -->
+
+	
+	
+    <bean id="transactionManager" 
+	class="org.springframework.jdbc.datasource.DataSourceTransactionManager"> 
+		<property name="dataSource" ref="dataSource" /> 
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	
+
+</beans>
+
+
+

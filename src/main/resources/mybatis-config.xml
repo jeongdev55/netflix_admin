@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<configuration>
+<settings>
+<setting name="cacheEnabled" value="false"/>
+<setting name="jdbcTypeForNull" value="NULL"/>
+</settings>
+	<typeAliases>
+	
+		<typeAlias alias="AdminMemberVO" 
+		type="com.mgr.netflix.admin.member.vo.AdminMemberVO"/>		
+		<typeAlias alias="AdminManagerVO" 
+		type="com.mgr.netflix.admin.manager.vo.AdminManagerVO"/>
+		<typeAlias alias="AdminTicketVO" 
+		type="com.mgr.netflix.admin.ticket.vo.AdminTicketVO"/>
+		<typeAlias alias="AdminActorVO" 
+		type="com.mgr.netflix.admin.actor.vo.AdminActorVO"/>
+		<typeAlias alias="AdminCategoryVO" 
+		type="com.mgr.netflix.admin.category.vo.AdminCategoryVO"/>
+		<typeAlias alias="AdminDirectorVO" 
+		type="com.mgr.netflix.admin.director.vo.AdminDirectorVO"/>
+		<typeAlias alias="AdminGenreVO" 
+		type="com.mgr.netflix.admin.genre.vo.AdminGenreVO"/>
+				<typeAlias alias="AdminContentVO" 
+		type="com.mgr.netflix.admin.content.vo.AdminContentVO"/>
+		
+		
+		
+				
+	</typeAliases>
+	
+<mappers>
+		<mapper resource="mapper/admin/member.xml"></mapper>
+		<mapper resource="mapper/admin/manager.xml"></mapper>
+		<mapper resource="mapper/admin/ticket.xml"></mapper>
+		<mapper resource="mapper/admin/category.xml"></mapper>
+		<mapper resource="mapper/admin/actor.xml"></mapper>
+		<mapper resource="mapper/admin/director.xml"></mapper>
+		<mapper resource="mapper/admin/genre.xml"></mapper>			
+		<mapper resource="mapper/admin/content.xml"></mapper>			
+</mappers>
+</configuration>

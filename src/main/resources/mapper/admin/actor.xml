@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Actor">
+	<resultMap type="AdminActorVO" id="ActorResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+</resultMap>
+
+	<select id="getAllActor" parameterType="hashMap"
+		resultMap="ActorResult">
+			SELECT *
+			from actor
+			order by name
+	</select>
+	
+	<insert id="insertActor" parameterType="AdminActorVO" >
+	insert into actor(id,name)
+	values(#{id}, #{name})
+</insert>
+
+<delete id="deleteActor" parameterType="AdminActorVO" >
+	delete from actor where id=#{id}
+</delete>
+
+<update id="modifyActor" parameterType="AdminActorVO" >
+	update actor
+	set id=#{id}, name=#{name}
+	where id=#{id}
+</update>
+	
+</mapper>

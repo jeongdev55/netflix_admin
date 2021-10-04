@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Manager">
+
+<resultMap id="managerMap" type="AdminManagerVO">
+<id property="id" column="id"/>
+<result property="email" column="email"/>
+<result property="pass" column="pass"/>
+<result property="name" column="name"/>
+<result property="position" column="position"/>
+
+</resultMap>
+<select id="Login" parameterType="AdminManagerVO" resultType="AdminManagerVO">
+	select *
+	from manager
+	where email=#{email} and pass=#{pass}
+</select>
+
+<select id="getAllManager" parameterType="hashMap"
+		resultMap="managerMap">
+		select *
+		from manager
+		order by id desc
+</select>
+
+<insert id="insertManager" parameterType="AdminManagerVO" >
+	insert into manager(id, email, pass, name, position)
+	values(#{id}, #{email}, #{pass}, #{name}, #{position})
+</insert>
+
+<delete id="deleteManager" parameterType="AdminManagerVO" >
+	delete from manager where id=#{id}
+</delete>
+
+<update id="modifyManager" parameterType="AdminManagerVO" >
+	update manager
+	set id=#{id}, email=#{email},pass=#{pass},name=#{name},position=#{position}
+	where id=#{id}
+</update>
+	
+
+</mapper>

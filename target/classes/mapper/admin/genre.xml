@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Genre">
+	<resultMap type="AdminGenreVO" id="GenreResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+</resultMap>
+
+	<select id="getAllGenre" parameterType="hashMap"
+		resultMap="GenreResult">
+		select *
+		from genre
+		order by name
+	</select>
+	
+	<insert id="insertGenre" parameterType="AdminGenreVO" >
+		insert into genre(id,name)
+		values(#{id}, #{name})
+	</insert>
+
+	<delete id="deleteGenre" parameterType="AdminGenreVO" >
+		delete from genre where id=#{id}
+	</delete>
+	
+	<update id="modifyGenre" parameterType="AdminGenreVO" >
+		update genre
+		set id=#{id}, name=#{name}
+		where id=#{id}
+	</update>
+	
+</mapper>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Content">
+
+<resultMap type="AdminContentVO" id="contentResult">
+		<result property="content_id" column="content_id" />
+		<result property="content_title" column="content_title" />
+		<result property="content_rating" column="content_rating" />
+		<result property="content_making" column="content_making" />
+		<result property="summary" column="summary" />
+		<result property="runningtime" column="runningtime" />
+		<result property="category_name" column="category_name" />
+		<result property="genre_name" column="genre_name" />
+		<result property="director_name" column="director_name" />
+		<result property="actor_name" column="actor_name" />
+		<result property="country" column="country" />
+		<result property="is_main" column="is_main" />
+		<result property="imagequality" column="imagequality" />
+		<result property="characteristic" column="characteristic" />
+		<result property="english_title" column="english_title" />
+	</resultMap>
+	
+	<!-- 카테고리별  -->
+	<select id="getAllContent" parameterType="AdminContentVO"
+		resultMap="contentResult">
+		
+	SELECT *
+	from content
+	where category_name=#{category_name}
+	</select>
+	
+	
+	<select id="getOneContent" parameterType="AdminContentVO" resultType="AdminContentVO">
+	select *
+	from content
+	where content_id=#{content_id}
+	</select>
+	
+		<select id="getTotalCount" parameterType="hashMap" resultType="int">
+	select count(*)
+	from content
+	</select>
+
+
+<insert id="insertContent" parameterType="AdminContentVO" >
+		insert into content(content_id, content_title, content_rating, content_making,
+								summary,runningtime,category_name,genre_name,director_name,
+								actor_name,country,is_main,imagequality,characteristic,english_title)								
+						values(#{content_id}, #{content_title}, #{content_rating}, #{content_making}, 
+								#{summary},#{runningtime},#{category_name},#{genre_name},#{director_name},
+								#{actor_name},#{country},#{is_main},#{imagequality},#{characteristic},#{english_title})
+	</insert>
+	
+	<delete id="deleteContent" parameterType="AdminContentVO" >
+		delete from content where content_id=#{content_id}
+	</delete>
+	
+	<update id="modifyContent" parameterType="AdminContentVO" >
+		update content
+		set 
+			content_id=#{content_id},content_title=#{content_title},content_rating=#{content_rating},
+			content_making=#{content_making},summary=#{summary},runningtime=#{runningtime},
+			category_name=#{category_name},genre_name=#{genre_name},director_name=#{director_name},
+			actor_name=#{actor_name},country=#{country},is_main=#{is_main},
+			imagequality=#{imagequality},characteristic=#{characteristic},english_title=#{english_title}
+		where content_id=#{content_id}
+	</update>
+
+</mapper>

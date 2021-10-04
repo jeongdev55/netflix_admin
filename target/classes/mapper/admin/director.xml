@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Director">
+	<resultMap type="AdminDirectorVO" id="DirectorResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+</resultMap>
+
+	<select id="getAllDirector" parameterType="hashMap"
+		resultMap="DirectorResult">
+			SELECT *
+			from director
+			order by name
+	</select>
+	
+	<insert id="insertDirector" parameterType="AdminDirectorVO" >
+		insert into director(id,name)
+		values(#{id}, #{name})
+	</insert>
+
+	<delete id="deleteDirector" parameterType="AdminDirectorVO" >
+		delete from director where id=#{id}
+	</delete>
+
+	<update id="modifyDirector" parameterType="AdminDirectorVO" >
+		update director
+		set id=#{id}, name=#{name}
+		where id=#{id}
+	</update>
+	
+</mapper>
