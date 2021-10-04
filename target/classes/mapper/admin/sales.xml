@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Sales">
+	<resultMap type="AdminSalesVO" id="SalesResult">
+		<result property="sales_id" column="sales_id" />
+		<result property="member_email" column="member_email" />
+		<result property="ticket_id" column="ticket_id" />
+		<result property="ticket_paydate" column="ticket_paydate" />
+		<result property="ticket_exdate" column="ticket_exdate" />
+		<result property="card_name" column="card_name" />
+		<result property="card_number" column="card_number" />
+	</resultMap>
+
+	<select id="getAllSales" parameterType="hashMap"	resultMap="SalesResult">
+	SELECT *
+	from sales
+	order by ticket_paydate
+	</select>
+	
+	<delete id="deleteSales" parameterType="AdminSalesVO" >
+		delete from sales where sales_id=#{sales_id}
+	</delete>
+	
+
+
+</mapper>

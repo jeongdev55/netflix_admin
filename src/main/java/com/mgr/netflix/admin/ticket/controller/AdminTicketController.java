@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mgr.netflix.admin.genre.vo.AdminGenreVO;
+
 import com.mgr.netflix.admin.ticket.service.AdminTicketService;
 import com.mgr.netflix.admin.ticket.vo.AdminTicketVO;
 

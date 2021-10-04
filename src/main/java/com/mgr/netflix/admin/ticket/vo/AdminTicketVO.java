@@ -8,7 +8,6 @@ public class AdminTicketVO {
 	private String ticket_content;
 	private String is_main;
 	private int count;
-
 	
 	public int getCount() {
 		return count;

@@ -5,8 +5,6 @@ var modifyTicket_id=""
 $(document).ready(function() {	
 	$('#deleteTicket').on('show.bs.modal', function(event) {
 		delTicket_id = $(event.relatedTarget).data('delid');
-
-
 	});
 	$('#modifyTicket').on('show.bs.modal', function(event) {
 		modifyTicket_id = $(event.relatedTarget).data('modifyid');
