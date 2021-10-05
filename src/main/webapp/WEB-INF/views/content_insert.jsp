@@ -112,7 +112,7 @@
 							     <select class=" multi_select form-control" id="genre_name " name="genre_name" 
 									multiple data-live-search="true"
 									title="선택해 주세요" 
-									data-max-options="4">
+									data-max-options="3">
 									<c:forEach var="genreList" items="${genreList }">
 										<option value="${genreList.name }">${genreList.name }</option>
 									</c:forEach>
@@ -124,7 +124,7 @@
 							     <select class=" multi_select form-control" id="director_name " name="director_name" 
 									multiple data-live-search="true"
 									title="선택해 주세요" 
-									data-max-options="4">
+									data-max-options="2">
 									<c:forEach var="directorList" items="${directorList }">
 										<option value="${directorList.name }">${directorList.name }</option>
 									</c:forEach>
@@ -136,7 +136,7 @@
 							     <select class=" form-control multi_select" id="actor_name " name="actor_name"
 									multiple data-live-search="true"
 									title="선택해 주세요" 
-									data-max-options="4">
+									data-max-options="3">
 									<c:forEach var="actorList" items="${actorList }">
 										<option value="${actorList.name }">${actorList.name }</option>
 									</c:forEach>
@@ -166,7 +166,7 @@
 							     <label>특징</label>
 							       <select class = "multi_select form-control" multiple id="characteristic" name="characteristic"   multiple data-live-search="true"
 									title="선택해 주세요" 
-									data-max-options="6">
+									data-max-options="3">
 										<option value="힐링">힐링</option>
 										<option value="설렘주의">설렘주의</option>
 										<option value="다크">다크</option>

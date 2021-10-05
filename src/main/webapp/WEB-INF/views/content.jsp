@@ -42,8 +42,8 @@
                                     <thead>
                                         <tr>
 											<th>id</th>
+											<th>poster</th>
                                             <th>title</th>
-                                            <th>english_title</th>
                                             <th>rating</th>
                                             <th>making</th>
                                             <th>director</th>
@@ -57,8 +57,8 @@
                                     <tfoot>
                                         <tr>
 											<th>id</th>
+											<th>poster</th>
                                             <th>title</th>
-                                            <th>english_title</th>
                                             <th>rating</th>
                                             <th>making</th>
                                             <th>director</th>
@@ -73,8 +73,8 @@
                                       <c:forEach var="ContentList" items="${ContentList}">
                                         <tr>
                                            <td>${ContentList.content_id }</td>
+                                            <td><img src="http://kghosting.dothome.co.kr/poster/${ContentList.english_title }.png" width="200px" ></td>
                                             <td>${ContentList.content_title }</td>
-                                            <td>${ContentList.english_title }</td>
                                             <td>${ContentList.content_rating }</td>
                                             <td>${ContentList.content_making }</td>
                                             <td>${ContentList.director_name }</td>

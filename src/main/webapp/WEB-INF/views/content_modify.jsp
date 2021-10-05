@@ -14,7 +14,15 @@
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.css" integrity="sha512-03p8fFZpOREY+YEQKSxxretkFih/D3AVX5Uw16CAaJRg14x9WOF18ZGYUnEqIpIqjxxgLlKgIB2kKIjiOD6++w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
        <link href="resources/css/styles.css" rel="stylesheet" />
-     
+     <script>
+ 	var genre='${oneList.genre_name }'; 		//장르 이름을 모두 가져옴
+ 	var actor='${oneList.actor_name }'; 		//배우
+ 	var director='${oneList.director_name }'; 	//감독
+ 	var characteristic='${oneList.characteristic }';	//특징
+ 	
+
+
+     </script>
     </head>
     <body>
      <%@ include file="header.jsp" %>  
@@ -110,10 +118,9 @@
 							     <br>
 							     <div>
 							      <label>장르</label>
-							     <select class=" multi_select form-control" id="genre_name " name="genre_name" 
+							     <select class=" genre_select form-control" id="genre_name " name="genre_name" 
 									multiple data-live-search="true"
-									title="${oneList.genre_name }" 
-									data-max-options="4">
+									data-max-options="3">
 									<c:forEach var="genreList" items="${genreList }">
 										<option value="${genreList.name }">${genreList.name }</option>
 									</c:forEach>
@@ -122,10 +129,9 @@
 							     <br>
 							     <div>
 							      <label>감독</label>
-							     <select class=" multi_select form-control" id="director_name " name="director_name" 
+							     <select class=" form-control director_selecter" id="director_name " name="director_name" 
 									multiple data-live-search="true"
-									title="${oneList.director_name }" 
-									data-max-options="4">
+									data-max-options="2">
 									<c:forEach var="directorList" items="${directorList }">
 										<option value="${directorList.name }">${directorList.name }</option>
 									</c:forEach>
@@ -134,10 +140,9 @@
 							     <br>
 							     <div>
 							      <label>배우</label>
-							     <select class=" form-control multi_select" id="actor_name " name="actor_name"
+							     <select class=" form-control actor_select" id="actor_name " name="actor_name"
 									multiple data-live-search="true"
-								title="${oneList.actor_name }" 
-									data-max-options="4">
+									data-max-options="3">
 									<c:forEach var="actorList" items="${actorList }">
 										<option value="${actorList.name }">${actorList.name }</option>
 									</c:forEach>
@@ -166,9 +171,8 @@
 							     <br>
 							    <div>
 							     <label>특징</label>
-							       <select class = "multi_select form-control" multiple id="characteristic" name="characteristic"   multiple data-live-search="true"
-								title="${oneList.characteristic }" 
-									data-max-options="6">
+							       <select class = "form-control characteristic_select" multiple id="characteristic" name="characteristic"   multiple data-live-search="true"
+									data-max-options="3">
 										<option value="힐링">힐링</option>
 										<option value="설렘주의">설렘주의</option>
 										<option value="다크">다크</option>
@@ -217,7 +221,7 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js" integrity="sha512-yDlE7vpGDP7o2eftkCiPZ+yuUyEcaBwoJoIhdXv71KZWugFqEphIS3PU60lEkFaz8RxaVsMpSvQxMBaKVwA5xg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="resources/js/content_modify_script.js"></script>
 		<script src="resources/js/content.js"></script>
-		
     </body>
 </html>
