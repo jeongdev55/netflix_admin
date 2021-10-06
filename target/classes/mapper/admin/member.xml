@@ -12,7 +12,6 @@
 		<result property="nickname" column="nickname" />
 		<result property="phonenumber" column="phonenumber" />
 		<result property="age" column="age" />
-		<result property="gender" column="gender" />
 		<result property="join_date" column="join_date" />
 		<result property="ticket_id" column="ticket_id" />
 		<result property="confirm" column="confirm" />
@@ -54,8 +53,8 @@
 	</select>
 
 	<insert id="insertMember" parameterType="AdminMemberVO" >
-		insert into member(email, pass, nickname, phonenumber,age,gender,join_date,ticket_id,confirm)
-		values(#{email}, #{pass}, #{nickname}, #{phonenumber}, #{age},#{gender},#{join_date},#{ticket_id},#{confirm})
+		insert into member(email, pass, nickname, phonenumber,age,join_date,ticket_id,confirm)
+		values(#{email}, #{pass}, #{nickname}, #{phonenumber}, #{age},#{join_date},#{ticket_id},#{confirm})
 	</insert>
 	
 	<delete id="deleteMember" parameterType="AdminMemberVO" >
@@ -64,7 +63,7 @@
 	
 	<update id="modifyMember" parameterType="AdminMemberVO" >
 		update member
-		set email=#{email},pass=#{pass},nickname=#{nickname},phonenumber=#{phonenumber},age=#{age},gender=#{gender},join_date=#{join_date},ticket_id=#{ticket_id},confirm=#{confirm}
+		set email=#{email},pass=#{pass},nickname=#{nickname},phonenumber=#{phonenumber},age=#{age},join_date=#{join_date},ticket_id=#{ticket_id},confirm=#{confirm}
 		where email=#{email}
 	</update>
 </mapper>

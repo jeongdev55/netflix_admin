@@ -57,14 +57,7 @@
 							      <input type="text" class="form-control " id="phonenumber" name="phonenumber" value="${oneList.phonenumber}">
 							     </div>
 							     <br>
-							     <div>
-									<label for="inputgender">성별</label> 
-										<select class="form-control modifymembergender" id="gender" name="gender"	>
-										<option value="${oneList.gender}">${oneList.gender}</option>
-										<option value="M">남자</option>
-										<option value="W">여자</option>
-										</select>
-							     </div>
+
 							    </div>
 				            </div>
 				        </div>

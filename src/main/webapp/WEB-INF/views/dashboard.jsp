@@ -97,7 +97,6 @@
                                             <th>Confirm</th>
                                             <th>Phone</th>
                                             <th>Age</th>
-                                            <th>Gender</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -109,7 +108,6 @@
                                             <th>Confirm</th>
                                             <th>Phone</th>
                                             <th>Age</th>
-                                            <th>Gender</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -122,7 +120,6 @@
                                     <td>${member.confirm}</td>
                                     <td>${member.phonenumber}</td>
                                     <td>${member.age}</td>
-                                    <td>${member.gender}</td>
                                     </tr>
                                     </c:forEach>
                                     </tbody>

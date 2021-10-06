@@ -8,7 +8,6 @@ public class AdminMemberVO {
 	private String nickname;	
 	private String phonenumber;
 	private int age;
-	private String gender;
 	private Date join_date;
 	private int ticket_id;
 	private String confirm;
@@ -63,12 +62,7 @@ public class AdminMemberVO {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+
 	public Date getJoin_date() {
 		return join_date;
 	}

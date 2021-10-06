@@ -194,7 +194,7 @@
 									    <div class=" text-center">
 									    <br>
 										    <button type="button" class="btn btn-primary btn-xlm" onclick="acyncContentModify('contentModify.ado')">수정</button>
-			      							<button type="reset" class="btn btn-danger btn-xlm">취소</button>
+			      							<button type="reset" class="btn btn-danger btn-xlm" onclick="history.back()">취소</button>
 									  </div>
 									</div>
 							    </div>

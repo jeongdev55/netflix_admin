@@ -7,8 +7,9 @@ $(document).ready(function(){
 	});
 	
 	   $('.multi_select').selectpicker(); //부트스트랩 셀렉트 사용 등록
-	
+	   
  });
+
 
 //콘텐츠 추가 부분
  function acyncContentInsert(url) {

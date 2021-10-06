@@ -12,10 +12,12 @@
         <meta name="author" content="" />
         <title>Admin-${category_name } 관리</title>
        <link href="resources/css/styles.css" rel="stylesheet" />
+        <link href="resources/css/content.css" rel="stylesheet" />
        <link rel="stylesheet" 
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
       crossorigin="anonymous">
+      <script src='http://code.jquery.com/jquery-1.8.2.min.js'></script>
     </head>
     <body>
          <%@ include file="header.jsp" %>   
@@ -82,7 +84,7 @@
                                             <td>${ContentList.genre_name }</td>
                                             <td>${ContentList.country }</td>
                                             <td>${ContentList.is_main }</td>
-                                            <td>   
+                                            <td>
                                             
 		            <!--================= 콘텐츠 수정 버튼================= -->
 		                        		<button type="button" class="btn btn-primary btn-sm" id="modifyBtn"
@@ -123,7 +125,7 @@
                             </div>
                     </div>
                    </div>
-                </main>
+                     </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
@@ -150,5 +152,6 @@
         <script src="resources/js/datatables-simple-demo.js"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
                 <script src="resources/js/content.js"></script>
+                <script src="resources/js/content_layer.js"></script>
     </body>
 </html>

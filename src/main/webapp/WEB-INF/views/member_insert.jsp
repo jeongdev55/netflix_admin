@@ -57,14 +57,6 @@
 							      <input type="text" class="form-control" id="phonenumber" name="phonenumber" placeholder="010-1111-2222">
 							     </div>
 							     <br>
-							     <div>
-									<label for="inputgender">성별</label> 
-										<select class="form-control" id="gender" name="gender"	>
-										<option value="선택">선택</option>
-										<option value="M">남자</option>
-										<option value="W">여자</option>
-										</select>
-							     </div>
 							    </div>
 				            </div>
 				        </div>
