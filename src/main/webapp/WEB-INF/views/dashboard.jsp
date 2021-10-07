@@ -157,7 +157,8 @@
               pointBorderWidth: 2,
               data: [${countMember.get(0).get("count")}, ${countMember.get(1).get("count")},${countMember.get(2).get("count")}, ${countMember.get(3).get("count")},
             	  ${countMember.get(4).get("count")},${countMember.get(5).get("count")},${countMember.get(6).get("count")},${countMember.get(7).get("count")},
-            	  ${countMember.get(8).get("count")},${countMember.get(9).get("count")},${countMember.get(10).get("count")},${countMember.get(11).get("count")}],
+            	  ${countMember.get(8).get("count")},${countMember.get(9).get("count")},${countMember.get(10).get("count")},${countMember.get(11).get("count")}
+            	  ],
             }],
           },
           options: {

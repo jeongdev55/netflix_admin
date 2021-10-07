@@ -29,6 +29,11 @@ public class AdminMemberDAO {
 		return mybatis.selectList("Member.getmonthData");
 	}
 	
+	public List<Map<String, String>> getAnalysisData(){
+		System.out.println("member-MyBatis - analysisData- 차트 분석 데이터 조회");
+		return mybatis.selectList("Member.analysisData");
+	}
+	
 	public AdminMemberVO getOneMember(AdminMemberVO vo)throws Exception{
     	System.out.println("DAO - Member - getOneMember - MyBatis 실행 ------");
 		return mybatis.selectOne("Member.getOneMember",vo);

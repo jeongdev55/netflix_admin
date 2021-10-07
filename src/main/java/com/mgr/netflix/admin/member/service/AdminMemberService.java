@@ -13,6 +13,8 @@ public interface AdminMemberService {
 	
 	List<Map<String, String>> getMonthCount();
 	
+	List<Map<String, String>> getAnalysisData();
+	
 	List<AdminMemberVO> getAllMember(HashMap<String, Object> map);
 	
 	AdminMemberVO getOneMember(AdminMemberVO vo) throws Exception;

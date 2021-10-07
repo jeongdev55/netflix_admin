@@ -37,28 +37,33 @@
                                         본인 인증(카드 등록) 여부
                                     </div>
          							<div class="card-body"><canvas id="myChart1" width="80%" height="30"></canvas></div>
-                         
                                 </div>
-
+								<br>
                                 <div class="card ">
                                     <div class="card-header">
                                         <i class="fas fa-chart-pie me-1"></i>
                                         티켓 구매자 분석
                                     </div>
                                     <div class="card-body"><canvas id="myChart2" width="80%" height="30"></canvas></div>
-                                   
                                 </div>
                             </div>
                         </div>
                         <div class="chart_right" style="flex:1;">
-                           <div class="col-md-20">
+                           <div class="col-md-12">
                                <div class="card">
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
+                                        월별 신규 가입자
+                                    </div>
+                                    <div class="card-body"><canvas id="myChart3" width="80%" height="31"></canvas></div>
+                                </div>
+                                <br>
+                         			<div class="card ">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-pie me-1"></i>
                                         회원 나이(연령) 분포도
                                     </div>
-                                    <div class="card-body"><canvas id="myChart3" width="90%" height="73"></canvas></div>
-                              
+                                    <div class="card-body"><canvas id="myChart4" width="80%" height="31"></canvas></div>
                                 </div>
                             </div>
 						</div>
@@ -85,12 +90,10 @@
    
 
     
-      
-
            
    var ctx1 = document.getElementById("myChart1");
    var myChart1 = new Chart(ctx1, {
- 	type: 'doughnut',
+ 	type: 'pie',
    	data: {
    	labels: ["YES", "NO"],
      datasets: [{
@@ -100,8 +103,6 @@
           '#9DCEFF',
           '#F2F3F6'
         ],
-        borderWidth: 0,
-        scaleBeginAtZero: true,
       }
     ]
   },
@@ -133,18 +134,18 @@
        datasets: [{
          label: "가입자 수",
          lineTension: 0.3,
-         backgroundColor: "rgba(2,117,216,0.2)",
-         borderColor: "rgba(2,117,216,1)",
+         backgroundColor: "#86c2b4",
+         borderColor: "#317174",
          pointRadius: 5,
-         pointBackgroundColor: "rgba(2,117,216,1)",
+         pointBackgroundColor: "#204e5f",
          pointBorderColor: "rgba(255,255,255,0.8)",
          pointHoverRadius: 5,
          pointHoverBackgroundColor: "rgba(2,117,216,1)",
          pointHitRadius: 50,
          pointBorderWidth: 2,
-         data: [${countMember.get(0).get("count")}, ${countMember.get(1).get("count")},${countMember.get(2).get("count")}, ${countMember.get(3).get("count")},
-       	  ${countMember.get(4).get("count")},${countMember.get(5).get("count")},${countMember.get(6).get("count")},${countMember.get(7).get("count")},
-       	  ${countMember.get(8).get("count")},${countMember.get(9).get("count")},${countMember.get(10).get("count")},${countMember.get(11).get("count")}],
+         data: [${month_map.get("01")}, ${month_map.get("02")},${month_map.get("03")},${month_map.get("04")},${month_map.get("05")},
+             ${month_map.get("06")},${month_map.get("07")},${month_map.get("08")},${month_map.get("09")},${month_map.get("10")},
+             ${month_map.get("11")},${month_map.get("12")}],
        }],
      },
      options: {
@@ -168,6 +169,48 @@
            },
            gridLines: {
              color: "rgba(0, 0, 0, .125)",
+           }
+         }],
+       },
+       legend: {
+         display: false
+       }
+     }
+   });
+   
+   var ctx4 = document.getElementById("myChart4");
+   var myLineChart = new Chart(ctx4, {
+     type: 'bar',
+     data: {
+       labels: ["10대", "20대", "30대", "40대", "50대", "60대 이상"],
+       datasets: [{
+         label: "age",
+         backgroundColor: ["#f8b195", "#f67280","#c06c84","#6c5b7b","#204e5f","#bfbfbf"],
+         borderColor: "rgba(2,117,216,1)",
+         data: [8,12,16,5,6,2],
+       }],
+     },
+     options: {
+       scales: {
+         xAxes: [{
+           time: {
+             unit: 'age'
+           },
+           gridLines: {
+             display: false
+           },
+           ticks: {
+             maxTicksLimit: 6
+           }
+         }],
+         yAxes: [{
+           ticks: {
+             min: 0,
+             max: 30,
+             maxTicksLimit: 5
+           },
+           gridLines: {
+             display: true
            }
          }],
        },

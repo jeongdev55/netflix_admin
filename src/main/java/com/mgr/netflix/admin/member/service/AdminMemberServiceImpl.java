@@ -55,6 +55,11 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	public List<Map<String, String>> getMonthCount() {
 		return MemberDAO.getMonthCount();
 	}
+
+	@Override
+	public List<Map<String, String>> getAnalysisData() {
+		return MemberDAO.getAnalysisData();
+	}
 	
 	
 

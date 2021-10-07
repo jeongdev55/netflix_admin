@@ -25,9 +25,22 @@
 		<result property="count" column="count" />
 	</resultMap>
 	
+	<resultMap type="map" id="AnalysisData">
+		<result property="month" column="month" />
+		<result property="age" column="age" />
+		<result property="ticket_id" column="ticket_id" />
+		<result property="confirm" column="confirm" />
+	</resultMap>
+	
 
 
-	<select id ="getmonthData" resultMap="monthlyMember">
+	<select id ="analysisData" resultMap="monthlyMember">
+			select to_char(join_date,'mm') as "month", age,nvl(ticket_id,0) "ticket_id",confirm
+			from member
+			
+	</select>
+	
+		<select id ="getmonthData" resultMap="AnalysisData">
 			select to_char(join_date,'mm') as "month", count(*)as count
 			from member
 			group by to_char(join_date,'mm') order by 1
