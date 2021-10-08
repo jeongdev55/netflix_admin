@@ -8,11 +8,10 @@ public class AdminMemberVO {
 	private String nickname;	
 	private String phonenumber;
 	private int age;
+	private String gender;
 	private Date join_date;
 	private int ticket_id;
 	private String confirm;
-	private String month; //월별 데이터 담을 공간
-	private int count;  //숫자 데이터를 담을 공간
 	
 	public AdminMemberVO() {} //디폴트 생성자
 	
@@ -25,22 +24,6 @@ public class AdminMemberVO {
 	public String getPass() {
 		return pass;
 	}
-	public String getMonth() {
-		return month;
-	}
-
-	public void setMonth(String month) {
-		this.month = month;
-	}
-
-	public int getCount() {
-		return count;
-	}
-
-	public void setCount(int count) {
-		this.count = count;
-	}
-
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
@@ -62,7 +45,12 @@ public class AdminMemberVO {
 	public void setAge(int age) {
 		this.age = age;
 	}
-
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	public Date getJoin_date() {
 		return join_date;
 	}

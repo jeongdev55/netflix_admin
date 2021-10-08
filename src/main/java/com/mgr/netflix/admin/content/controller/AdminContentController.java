@@ -49,6 +49,7 @@ public class AdminContentController {
 		return "content";
 	}
 	
+
 	@RequestMapping("/content_insertgo.ado")
 	public String content_Insertgo(Model model,@RequestParam("category_name") String category_name,HttpServletRequest request) throws Exception{
 		HashMap<String, Object> map = new HashMap<String, Object>();

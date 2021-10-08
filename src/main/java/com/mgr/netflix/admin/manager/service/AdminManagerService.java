@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.mgr.netflix.admin.manager.vo.AdminManagerVO;
-
+import com.mgr.netflix.admin.member.vo.AdminMemberVO;
 
 
 public interface AdminManagerService {

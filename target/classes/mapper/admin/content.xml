@@ -29,6 +29,8 @@
 	where category_name=#{category_name}
 	</select>
 	
+
+	
 	
 	<select id="getOneContent" parameterType="AdminContentVO" resultType="AdminContentVO">
 	select *

@@ -3,26 +3,26 @@ package com.mgr.netflix.admin.manager.controller;
 
 import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 import javax.annotation.Resource;
-
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.mgr.netflix.admin.manager.service.AdminManagerService;
 import com.mgr.netflix.admin.manager.vo.AdminManagerVO;
-
+import com.mgr.netflix.admin.member.vo.AdminMemberVO;
 
 
 @Controller
@@ -39,18 +39,11 @@ public class AdminManagerController {
 		return "login";
 	}
 	
-	@RequestMapping("/admin_relogin.ado")
-	public String adminreLogin(Model model) throws Exception{
-    	String msg="로그인 실패";
-    	model.addAttribute("msg",msg);
-		return "login";
-	}
-	
     @RequestMapping(value = "/login_check.ado", method = RequestMethod.POST)
     public String Login(@RequestParam("email") String email
 		                       , @RequestParam("pass") String pass,
 		                       HttpSession session,
-		                       HttpServletResponse response,Model model) throws Exception {
+		                       HttpServletResponse response) throws Exception {
         
         AdminManagerVO vo = new AdminManagerVO();
 
@@ -63,11 +56,8 @@ public class AdminManagerController {
         	System.out.println("로그인 " +adminLogin.getEmail()+ "성공");
         	session.setAttribute("manager", adminLogin);
         	return "redirect:/adminDash.ado";
-        }else {
-        	System.out.println("로그인 실패");
-    		return "redirect:/admin_relogin.ado";         	
         }
-
+		return "redirect:/admin_login.ado"; 
     }
     
   //============로그인아웃 처리=============================

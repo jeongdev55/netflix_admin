@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.mgr.netflix.admin.manager.dao.AdminManagerDAO;
 import com.mgr.netflix.admin.manager.vo.AdminManagerVO;
-
+import com.mgr.netflix.admin.member.vo.AdminMemberVO;
 
 @Service("adminManagerService")
 public class AdminManagerServicelmpl implements AdminManagerService {
