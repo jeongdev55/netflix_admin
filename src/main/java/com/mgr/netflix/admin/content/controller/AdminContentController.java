@@ -46,7 +46,7 @@ public class AdminContentController {
 		model.addAttribute("ContentList",ContentList);
 		request.setAttribute("category_name", category_name);
 		
-		return "content";
+		return "/admin/content";
 	}
 	
 
@@ -59,7 +59,7 @@ public class AdminContentController {
 		model.addAttribute("genreList",adminGenreService.getAllGenre(map)); //장르 목록 전달
 		request.setAttribute("category_name", category_name);
 		
-		return "content_insert";
+		return "/admin/content_insert";
 	}
 	
 	@RequestMapping(value ="/content_modifygo.ado")
@@ -72,7 +72,7 @@ public class AdminContentController {
 		model.addAttribute("genreList",adminGenreService.getAllGenre(map)); //장르 목록 전달
 		request.setAttribute("category_name", category_name);
 		
-		return "content_modify";
+		return "/admin/content_modify";
 	}
 	
 	

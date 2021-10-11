@@ -4,16 +4,32 @@ import java.sql.Date;
 
 public class AdminMemberVO {
 	private String email;
-	private String pass;
-	private String nickname;	
-	private String phonenumber;
-	private int age;
-	private String gender;
-	private Date join_date;
-	private int ticket_id;
-	private String confirm;
+	private String password;
+	private String membership;
+	private String membership_chk;
+	private Date membership_date;
+	private String name;
+	private String cardnum;
+	private String expiredate;
+	private String birthyear;
+	private String birthmonth;
+	private String birthday;
 	
-	public AdminMemberVO() {} //디폴트 생성자
+	public String getMonth() {
+		return month;
+	}
+	public void setMonth(String month) {
+		this.month = month;
+	}
+	private String month;
+	private Date joindate;
+	
+	public String getExpiredate() {
+		return expiredate;
+	}
+	public void setExpiredate(String expiredate) {
+		this.expiredate = expiredate;
+	}
 	
 	public String getEmail() {
 		return email;
@@ -21,56 +37,65 @@ public class AdminMemberVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPass() {
-		return pass;
+	public String getPassword() {
+		return password;
 	}
-	public void setPass(String pass) {
-		this.pass = pass;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public String getNickname() {
-		return nickname;
+	public String getMembership() {
+		return membership;
 	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setMembership(String membership) {
+		this.membership = membership;
 	}
-	public String getPhonenumber() {
-		return phonenumber;
+	public String getMembership_chk() {
+		return membership_chk;
 	}
-	public void setPhonenumber(String phonenumber) {
-		this.phonenumber = phonenumber;
+	public void setMembership_chk(String membership_chk) {
+		this.membership_chk = membership_chk;
 	}
-	public int getAge() {
-		return age;
+	public Date getMembership_date() {
+		return membership_date;
 	}
-	public void setAge(int age) {
-		this.age = age;
+	public void setMembership_date(Date membership_date) {
+		this.membership_date = membership_date;
 	}
-	public String getGender() {
-		return gender;
+	public String getName() {
+		return name;
 	}
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public Date getJoin_date() {
-		return join_date;
+	public String getCardnum() {
+		return cardnum;
 	}
-	public void setJoin_date(Date join_date) {
-		this.join_date = join_date;
+	public void setCardnum(String cardnum) {
+		this.cardnum = cardnum;
 	}
-	public int getTicket_id() {
-		return ticket_id;
+	public String getBirthyear() {
+		return birthyear;
 	}
-	public void setTicket_id(int ticket_id) {
-		this.ticket_id = ticket_id;
+	public void setBirthyear(String birthyear) {
+		this.birthyear = birthyear;
 	}
-
-	public String getConfirm() {
-		return confirm;
+	public String getBirthmonth() {
+		return birthmonth;
 	}
-
-	public void setConfirm(String confirm) {
-		this.confirm = confirm;
+	public void setBirthmonth(String birthmonth) {
+		this.birthmonth = birthmonth;
 	}
-
+	public String getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+	public Date getJoindate() {
+		return joindate;
+	}
+	public void setJoindate(Date joindate) {
+		this.joindate = joindate;
+	}
 
 }

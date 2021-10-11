@@ -9,6 +9,7 @@
 <setting name="cacheEnabled" value="false"/>
 <setting name="jdbcTypeForNull" value="NULL"/>
 </settings>
+
 	<typeAliases>
 	
 		<typeAlias alias="AdminMemberVO" 
@@ -26,11 +27,7 @@
 		<typeAlias alias="AdminGenreVO" 
 		type="com.mgr.netflix.admin.genre.vo.AdminGenreVO"/>
 		<typeAlias alias="AdminContentVO" 
-		type="com.mgr.netflix.admin.content.vo.AdminContentVO"/>
-		<typeAlias alias="AdminSalesVO" 
-		type="com.mgr.netflix.admin.sales.vo.AdminSalesVO"/>
-		
-		
+		type="com.mgr.netflix.admin.content.vo.AdminContentVO"/>		
 					
 	</typeAliases>
 	
@@ -43,9 +40,7 @@
 		<mapper resource="mapper/admin/director.xml"></mapper>
 		<mapper resource="mapper/admin/genre.xml"></mapper>			
 		<mapper resource="mapper/admin/content.xml"></mapper>			
-		<mapper resource="mapper/admin/sales.xml"></mapper>		
 		
-		
-	
+
 </mappers>
 </configuration>

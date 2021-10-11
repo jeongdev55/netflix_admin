@@ -28,7 +28,7 @@ public class AdminGenreController {
 		genreList=adminGenreService.getAllGenre(map);
 		model.addAttribute("genreList",genreList);
 		
-		return "genre";
+		return "/admin/genre";
 	}
 	
 	@ResponseBody

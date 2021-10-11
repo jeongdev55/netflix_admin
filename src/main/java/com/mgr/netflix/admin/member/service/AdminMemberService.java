@@ -10,11 +10,10 @@ import com.mgr.netflix.admin.member.vo.AdminMemberVO;
 
 public interface AdminMemberService {
 	
-	int getTotalCount(HashMap<String, Object> map); 
+	int getTotalCount(HashMap<String, Object> map); 	
 	
-	List<Map<String, String>> getMonthCount();
-	
-	List<Map<String, String>> getAnalysisData();
+	List<Map<String, String>> monthAnalysisData();
+	List<Map<String, String>> AnalysisData();
 	
 	List<AdminMemberVO> getAllMember(HashMap<String, Object> map);
 	
@@ -26,5 +25,8 @@ public interface AdminMemberService {
 
 	int modifyMember(AdminMemberVO vo);
 	
+	List<AdminMemberVO> getAllSales(HashMap<String, Object> map);
+	
+	int deleteSales(AdminMemberVO vo);
 	
 }

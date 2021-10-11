@@ -30,7 +30,7 @@ public class AdminDirectorController {
 		directorList=adminDirectorService.getAllDirector(map);
 		model.addAttribute("directorList",directorList);
 		
-		return "director";
+		return "/admin/director";
 	}
 	
 	@ResponseBody

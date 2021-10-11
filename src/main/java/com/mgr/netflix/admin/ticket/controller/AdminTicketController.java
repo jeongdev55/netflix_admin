@@ -28,7 +28,7 @@ public class AdminTicketController {
 		ticketList=adminTicketService.getAllTicket(map);
 		model.addAttribute("ticketList",ticketList);
 		
-		return "ticket";
+		return "/admin/ticket";
 	}
 	
 	@ResponseBody

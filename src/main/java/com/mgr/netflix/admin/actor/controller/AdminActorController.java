@@ -27,7 +27,7 @@ public class AdminActorController {
 		actorList=adminActorService.getAllActor(map);
 		model.addAttribute("actorList",actorList);
 		
-		return "actor";
+		return "/admin/actor";
 	}
 	
 	

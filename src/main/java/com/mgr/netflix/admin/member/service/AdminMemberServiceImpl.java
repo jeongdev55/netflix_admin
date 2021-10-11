@@ -51,14 +51,25 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 		return MemberDAO.getOneMember(vo);
 	}
 
+
 	@Override
-	public List<Map<String, String>> getMonthCount() {
-		return MemberDAO.getMonthCount();
+	public List<Map<String, String>> monthAnalysisData() {
+		return MemberDAO.monthAnalysisData();
 	}
 
 	@Override
-	public List<Map<String, String>> getAnalysisData() {
-		return MemberDAO.getAnalysisData();
+	public List<AdminMemberVO> getAllSales(HashMap<String, Object> map) {
+		return MemberDAO.getAllSales(map);
+	}
+
+	@Override
+	public int deleteSales(AdminMemberVO vo) {
+		return MemberDAO.deleteSales(vo);
+	}
+
+	@Override
+	public List<Map<String, String>> AnalysisData() {
+		return MemberDAO.AnalysisData();
 	}
 	
 	

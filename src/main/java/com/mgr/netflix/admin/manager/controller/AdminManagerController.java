@@ -36,7 +36,7 @@ public class AdminManagerController {
 	//============로그인 처리=============================
 	@RequestMapping("/admin_login.ado")
 	public String adminLogin(Model model) throws Exception{
-		return "login";
+		return "/admin/login";
 	}
 	
     @RequestMapping(value = "/login_check.ado", method = RequestMethod.POST)
@@ -80,7 +80,7 @@ public class AdminManagerController {
 		List<AdminManagerVO> managerList;
 		managerList = adminManagerService.getAllManager(map);
 		model.addAttribute("managerList",managerList);
-		return "manager";
+		return "/admin/manager";
 	}
 	
 	
