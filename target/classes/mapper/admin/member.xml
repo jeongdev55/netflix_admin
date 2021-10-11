@@ -28,6 +28,7 @@
 		<result property="cardnum" column="cardnum" />
 	</resultMap>
 	
+	
 	<!-- 분석 테이블 용 -->
 	<resultMap type="map" id="AnalysisData">
 		<result property="month" column="month" />
