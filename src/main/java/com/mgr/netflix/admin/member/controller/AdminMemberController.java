@@ -33,6 +33,7 @@ public class AdminMemberController {
 		
 		List<AdminMemberVO> memberList;
 		memberList = adminMemberService.getAllMember(map);
+
 		
 		model.addAttribute("memberList", memberList);
 		return "admin/member";		

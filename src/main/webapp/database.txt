@@ -11,7 +11,7 @@
 1) 배우 테이블 (actor)
 sql 문법 (전체 복사 사용)
 
-  CREATE TABLE "NETFLIX"."ACTOR" 
+CREATE TABLE "NETFLIX"."ACTOR" 
    (	"ID" NUMBER(5,0) NOT NULL ENABLE, 
 	"NAME" VARCHAR2(30 BYTE) NOT NULL ENABLE, 
 	 CONSTRAINT "ACTOR_PK" PRIMARY KEY ("ID")
@@ -90,6 +90,7 @@ sql 문법 (전체 복사 사용)
 2) 카테고리 테이블 (category)
 sql 문법 (전체 복사 사용)
 
+
   CREATE TABLE "NETFLIX"."CATEGORY" 
    (	"CATEGORY_ID" NUMBER(10,0) NOT NULL ENABLE, 
 	"CATEGORY_NAME" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
@@ -115,6 +116,7 @@ sql 문법 (전체 복사 사용)
 3) 콘텐츠 테이블 (content)
 sql 문법 (전체 복사 사용)
 
+ 
   CREATE TABLE "NETFLIX"."CONTENT" 
    (	"CONTENT_ID" VARCHAR2(20 BYTE), 
 	"CONTENT_TITLE" VARCHAR2(100 BYTE) NOT NULL ENABLE, 
@@ -141,6 +143,22 @@ sql 문법 (전체 복사 사용)
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "SYSTEM" ;
+
+   COMMENT ON COLUMN "NETFLIX"."CONTENT"."CONTENT_ID" IS '컨텐츠 id';
+   COMMENT ON COLUMN "NETFLIX"."CONTENT"."CONTENT_TITLE" IS '컨텐츠 제목';
+   COMMENT ON COLUMN "NETFLIX"."CONTENT"."CONTENT_RATING" IS '컨텐츠 관람등급';
+   COMMENT ON COLUMN "NETFLIX"."CONTENT"."CONTENT_MAKING" IS '컨텐츠 제작년도';
+   COMMENT ON COLUMN "NETFLIX"."CONTENT"."SUMMARY" IS '컨텐츠 요약설명';
+   COMMENT ON COLUMN "NETFLIX"."CONTENT"."RUNNINGTIME" IS '컨텐츠 시간';
+   COMMENT ON COLUMN "NETFLIX"."CONTENT"."CATEGORY_NAME" IS '카테고리 이름';
+   COMMENT ON COLUMN "NETFLIX"."CONTENT"."GENRE_NAME" IS '장르 이름';
+   COMMENT ON COLUMN "NETFLIX"."CONTENT"."DIRECTOR_NAME" IS '감독 이름';
+   COMMENT ON COLUMN "NETFLIX"."CONTENT"."ACTOR_NAME" IS '배우 이름';
+   COMMENT ON COLUMN "NETFLIX"."CONTENT"."COUNTRY" IS '만든 국가';
+   COMMENT ON COLUMN "NETFLIX"."CONTENT"."IS_MAIN" IS '메인노출여부';
+   COMMENT ON COLUMN "NETFLIX"."CONTENT"."IMAGEQUALITY" IS '화질';
+   COMMENT ON COLUMN "NETFLIX"."CONTENT"."CHARACTERISTIC" IS '특징';
+   COMMENT ON COLUMN "NETFLIX"."CONTENT"."ENGLISH_TITLE" IS '영어 이름';
   
  데이터 삽입 
  -데이블 접속 >> 상단 탭 [데이터] 선택 >>그 아래 탭 3번째 +그림으로 데이터 행 추가(데이터 수만큼) >> 아래 전체 붙여넣기
@@ -185,19 +203,39 @@ sql 문법 (전체 복사 사용)
  데이터 삽입 
  -데이블 접속 >> 상단 탭 [데이터] 선택 >>그 아래 탭 3번째 +그림으로 데이터 행 추가(데이터 수만큼) >> 아래 전체 붙여넣기
  id    name
-300	이장호
-301	김철수
-302	박진표
-303	양우석
-304	이재규
-305	이원태
-306	윤종빈
 307	권수경
-308	장준환
-309	매트 리브스
+330	김노은
+329	김대웅
+320	김범래
+322	김성훈
+317	김진민
+301	김철수
+326	낸시 마이어스
 310	뤽 베송
+309	매트 리브스
 311	바즈 루어만
+302	박진표
+327	샘 하그레이브
+334	서혜진
+313	신원호
+303	양우석
+328	오토 배서스트
+319	유기환
+306	윤종빈
+318	윤하림
 312	이권태
+314	이동규
+324	이병헌
+323	이상근
+300	이장호
+304	이재규
+332	이진민
+331	장시원
+333	장시원
+308	장준환
+325	조성희
+305	홍길동
+321	황동혁
 
 5) 장르 테이블 (genre)
 sql 문법 (전체 복사 사용)
@@ -219,40 +257,48 @@ sql 문법 (전체 복사 사용)
  데이터 삽입 
  -데이블 접속 >> 상단 탭 [데이터] 선택 >>그 아래 탭 3번째 +그림으로 데이터 행 추가(데이터 수만큼) >> 아래 전체 붙여넣기
  id    name
-100	추리소설
-101	스릴러
-102	공포
-103	미국 영화
-104	판타지
-105	무협
-106	게임
-107	로맨스
-108	다큐
-109	전쟁
-110	코미디
-111	멜로
 112	SF
-113	스포츠
-114	교육
-115	독립
-116	뮤지컬
-117	시트콤
-118	청춘
-119	웹드라마
+136	TV프로그램
 120	감동적
-121	한국 드라마
-122	로맨틱
-123	어드벤처
-124	액션
-125	리얼리티 TV
-126	시대물
+106	게임
+130	경쟁
+102	공포
+114	교육
+108	다큐
 127	도서 원작
+115	독립
+135	라이프스타일
+107	로맨스
+122	로맨틱
+125	리얼리티
+133	메디컬
+111	멜로
+105	무협
+116	뮤지컬
+103	미국 영화
+101	스릴러
+113	스포츠
+126	시대물
+137	시리즈
+117	시트콤
+124	액션
+123	어드벤처
+131	예능 버라이어티
+119	웹드라마
+138	웹툰 원작
+132	음식 & 여행
+109	전쟁
 128	정치
-129	로맨스 리얼리티 TV
+118	청춘
+100	추리소설
+110	코미디
+104	판타지
+121	한국 드라마
 
 
 6) 매니저 테이블 (manager)
 sql 문법 (전체 복사 사용)
+
 
   CREATE TABLE "NETFLIX"."MANAGER" 
    (	"EMAIL" VARCHAR2(50 BYTE) NOT NULL ENABLE, 
@@ -278,26 +324,27 @@ sql 문법 (전체 복사 사용)
 4	admin@netflix.com	123	중간 관리자	김사원
 2	admin2@netflix.com	123	최고 관리자	하대리
 
-7) 멤버 테이블 (member)
+7) 멤버 테이블 ("client")
 sql 문법 (전체 복사 사용)
 
-  CREATE TABLE "NETFLIX"."MEMBER" 
-   (	"EMAIL" VARCHAR2(50 BYTE) NOT NULL ENABLE, 
-	"PASS" VARCHAR2(60 BYTE) NOT NULL ENABLE, 
-	"NICKNAME" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
-	"PHONENUMBER" VARCHAR2(15 BYTE) NOT NULL ENABLE, 
-	"AGE" NUMBER(3,0) NOT NULL ENABLE, 
-	"GENDER" CHAR(1 BYTE) NOT NULL ENABLE, 
-	"JOIN_DATE" DATE NOT NULL ENABLE, 
-	"CONFIRM" CHAR(1 BYTE) NOT NULL ENABLE, 
-	"TICKET_ID" NUMBER(20,0) NOT NULL ENABLE, 
-	 CONSTRAINT "MEMBER_PK" PRIMARY KEY ("EMAIL", "TICKET_ID")
+  CREATE TABLE "NETFLIX"."client" 
+   (	"EMAIL" VARCHAR2(50 BYTE), 
+	"PASSWORD" VARCHAR2(50 BYTE), 
+	"MEMBERSHIP" VARCHAR2(50 BYTE), 
+	"MEMBERSHIP_CHK" VARCHAR2(10 BYTE), 
+	"MEMBERSHIP_DATE" DATE, 
+	"NAME" VARCHAR2(30 BYTE), 
+	"CARDNUM" VARCHAR2(50 BYTE), 
+	"EXPIREDATE" VARCHAR2(20 BYTE), 
+	"BIRTHYEAR" VARCHAR2(4 BYTE), 
+	"BIRTHMONTH" VARCHAR2(2 BYTE), 
+	"BIRTHDAY" VARCHAR2(2 BYTE), 
+	"JOINDATE" DATE DEFAULT sysdate, 
+	 PRIMARY KEY ("EMAIL")
   USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
-  TABLESPACE "SYSTEM"  ENABLE, 
-	 CONSTRAINT "MEMBER_FK1" FOREIGN KEY ("TICKET_ID")
-	  REFERENCES "NETFLIX"."TICKET" ("TICKET_ID") ENABLE
+  TABLESPACE "SYSTEM"  ENABLE
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
@@ -306,58 +353,43 @@ sql 문법 (전체 복사 사용)
   
  데이터 삽입 
  -데이블 접속 >> 상단 탭 [데이터] 선택 >>그 아래 탭 3번째 +그림으로 데이터 행 추가(데이터 수만큼) >> 아래 전체 붙여넣기
-EMAIL PASS NICKNAME PHONENUMBER AGE GENDER JOIN_DATE CONFIRM TICKET_ID
-wkdgowjd13@naver.com	123	해정	23	010-8482-9234	W	21/06/16	104	Y
-dklad@naver.com	123	김미자	53	010-4547-4557	W	21/02/22	102	Y
-sda@naver.com	123	가가가	24	010-2228-7575	W	21/09/11	102	Y
-wk23dslad@naver.com	123	고길동	22	010-2333-2617	M	21/02/22	104	Y
-ghdfhdf;	123123	길동	35	010-2222-3333	M	21/03/19	106	Y
-eqwgfhjghfqw;	123123	길동	35	010-2222-3333	M	21/10/19	106	Y
-fgjhfghj;	123123	길동	35	010-2222-3333	M	21/09/19	104	Y
-fdghgdfgh;	123123	수박	44	010-2232-4123	M	21/11/11	106	Y
-eqyyhjghfqw;	123123	길동	35	010-2222-3333	M	21/04/19	106	Y
-fgjhyyyfghj;	123123	하하	35	010-2222-3333	M	21/06/19	104	Y
-fdghghfgdfgh;	123123	수박	44	010-2232-4123	M	21/12/11	106	Y
-eqyyhasdjghfqw;	123123	길동	35	010-2222-3333	M	21/05/19	106	Y
-gggg	123123	로이	11	010-2222-7545	W	21/07/25	104	y
-sadas@naver.com	123	리수	12	010-1546-4651	M	21/05/09	106	Y
-dksla@naver.com	123	하이	44	010-4444-7845	W	21/09/01	104	Y
-ssda@naver.com	123	김기리	45	010-4444-5555	M	21/08/15	106	Y
-asd@saas	123	한효주	12	010-1111-2222	M	21/12/09	102	Y
-sda@amsda	123	sds	21	010-4548-4848	M	21/04/03	102	N
-didididi@didididi	123	ds	44	010-4577-4877	W	21/01/26	102	Y
-jjo1dkdad@gmail.com	123	김혜수	56	010-6123-4557	W	21/03/22	102	Y
-d3sdtqwd@gmail.com	123	최정묵	28	010-7345-4557	M	21/04/22	102	Y
-ad2attqwed@gmail.com	123	김수민	33	010-7875-4557	W	21/05/22	104	Y
-ww5egs@naver.com	123	최혜지	41	010-4547-5757	W	21/06/22	102	Y
-hha1sre@naver.com	123	김동현	22	010-8834-1117	M	21/07/22	106	Y
-yvv5sde@gmail.com	123	김한길	25	010-9134-8837	M	21/08/22	106	Y
-dya23sewq@naver.com	123	박수자	31	010-9934-4557	W	21/08/22	102	Y
-sdgsdd@gmail.com	123	복남이	26	010-5184-4557	M	21/09/22	106	Y
-dhhsdeq@naver.com	123	허진수	22	010-3453-4557	W	21/09/22	104	Y
-d123ad@naver.com	123	강형욱	23	010-6543-2333	M	21/01/22	104	Y
-w1ka23dslad@naver.com	123	고길동	22	010-2333-2617	M	21/02/22	104	Y
-jjo1SAddkdad@gmail.com	123	김혜수	56	010-6123-4557	W	21/03/22	102	Y
-d3Dsdtgqwd@gmail.com	123	최정묵	28	010-7345-4557	M	21/04/22	102	Y
-wwsa5asdaegs@naver.com	123	최혜지	41	010-4547-5757	W	21/06/22	102	Y
-hhaasd1sre@naver.com	123	김동현	22	010-8834-1117	M	21/07/22	106	Y
-yvv5sdsde@gmail.com	123	김한길	25	010-9134-8837	M	21/08/22	106	Y
-dyf1aas23sewq@naver.com	123	박수자	31	010-9934-4557	W	21/08/22	102	Y
-sdsdgsdd@gmail.com	123	복남이	26	010-5184-4557	M	21/09/22	106	Y
-dhhsddeq@naver.com	123	허진수	22	010-3453-4557	W	21/09/22	104	Y
-d12243ad@naver.com	123	강형욱	23	010-6543-2333	M	21/11/22	104	Y
-w1ffka2413dslad@naver.com	123	고길동	22	010-2333-2617	M	21/02/22	106	Y
-jjo1S12dkdad@gmail.com	123	김혜수	56	010-6123-4557	W	21/11/22	102	Y
-d3Dhsdqwd@gmail.com	123	최정묵	28	010-7345-4557	M	21/12/22	102	Y
-aqwewed@gmail.com	123	김수민	33	010-7875-4557	W	21/05/22	104	Y
-wwasd5asdaegs@naver.com	123	최혜지	41	010-4547-5757	W	21/06/22	102	Y
-hhag1sre@naver.com	123	김동현	22	010-8834-1117	M	21/07/22	106	Y
-yvv5asdsde@gmail.com	123	김한길	25	010-9134-8837	M	21/08/22	106	Y
-dyfasds23sewq@naver.com	123	박수자	31	010-9934-4557	W	21/12/22	102	Y
-sdasddd@gmail.com	123	복남이	26	010-5184-4557	M	21/12/22	106	Y
+wkdgowjd13@naver.com	123	true	basic	21/01/07	장해정	1002-850-346024	2021-02-07	97	07	11	21/01/01
+dklad@naver.com	123	true	basic	21/01/22	김민준	1002-775-4542	2021-02-22	99	02	12	21/01/22
+sda@naver.com	123	true	standard	21/01/14	강호준	302-4571-4243	2021-02-14	87	11	24	21/01/14
+wk23dslad@naver.com	123	false									21/02/11
+d3sdtqwd@gmail.com	123	false									21/05/12
+ad2attqwed@gmail.com	123	false									21/05/25
+ww5egs@naver.com	123	false									21/07/21
+hha1sre@naver.com	123	false									21/06/24
+dya23sewq@naver.com	123	true	premium	21/09/22	고현경	302-7612-7748	2021-10-22	65	07	12	21/09/22
+dhhsdeq@naver.com	123	true	basic	21/02/11	최진영	549-7513-4512	2021-03-11	108	08	18	21/02/11
+d123ad@naver.com	123	true	standard	21/06/28	김수진	548-4546-4545	2021-07-28	77	12	29	21/06/28
+w1ka23dslad@naver.com	123	true	premium	21/05/23	박재철	973-5138-4425	2021-06-23	91	01	28	21/05/23
+jjo1SAddkdad@gmail.com	123	true	basic	21/09/25	박수민	977-4133-5531	2021-10-25	85	06	08	21/09/25
+d3Dsdtgqwd@gmail.com	123	true	standard	21/10/06	김동현	530-7125-4543	2021-11-06	81	05	01	21/10/06
+gkgkwld@naver.com	123	false									21/08/22
+hhaasd1sre@naver.com	123	false									21/03/09
+yvv5sdsde@gmail.com	123	false									21/03/29
+dyf1aas23sewq@naver.com	123	false									21/03/26
+sdsdgsdd@gmail.com	123	false									21/07/22
+w1ffka2413dslad@naver.com	123	false									21/08/18
+jjo1S12dkdad@gmail.com	123	false									21/07/10
+d3Dhsdqwd@gmail.com	123	false									21/10/10
+aqwewed@gmail.com	123	true	basic	21/04/20	한지석	157-4578-8821	2021-05-20	88	08	01	21/04/20
+wwasd5asdaegs@naver.com	123	true	basic	21/03/15	조지혜	187-8897-7513	2021-04-15	87	07	05	21/03/15
+hhag1sre@naver.com	123	true	basic	21/07/19	김희연	302-1105-4572	2021-08-19	93	11	07	21/07/19
+yvv5asdsde@gmail.com	123	true	basic	21/09/19	박태희	012-4762-4567	2021-10-19	92	08	21	21/09/19
+dyfasds23sewq@naver.com	123	true	standard	21/10/19	장진현	173-7988-5788	2021-11-19	97	01	29	21/10/19
+sdasddd@gmail.com	123	true	standard	21/04/20	우지민	019-4872-1102	2021-05-20	81	02	27	21/04/20
+13sdaa@gmail.com	123	true	premium	21/04/01	이세준	279-7985-4538	2021-05-01	72	03	14	21/04/01
+rlatnrqhr@gmail.com	123	true	premium	21/06/22	김민섭	598-8754-897	2021-07-22	99	05	15	21/06/22
+whgusrud@gmail.com	123	true	premium	21/06/12	최지훈	880-7872-4575	2021-07-12	104	09	11	21/06/12
+qw3ek@naver.com	123	true	premium	21/08/08	진자림	444-878-4354	2021-09-08	96	07	02	21/08/08
+glkk24@naver.com	123	true	basic	21/02/23	최진자	781-4579-7757	2021-03-23	55	07	24	21/02/23
 
 8) 티켓 테이블 (director)
 sql 문법 (전체 복사 사용)
+
 
   CREATE TABLE "NETFLIX"."TICKET" 
    (	"TICKET_ID" NUMBER(20,0) NOT NULL ENABLE, 
@@ -382,6 +414,6 @@ sql 문법 (전체 복사 사용)
  데이터 삽입 
  -데이블 접속 >> 상단 탭 [데이터] 선택 >>그 아래 탭 3번째 +그림으로 데이터 행 추가(데이터 수만큼) >> 아래 전체 붙여넣기
 TICKET_ID TICKET_NAME TICKET_LIMITED TICKET_PRICE TICKET_CONTENT IS_MAIN
-106	프리미엄	4	14500	UHD(4K)및 HDR로 넷플릭스 최고 화질 제공. 스마트폰,태블릿,컴퓨터 또는 TV로 시청.  Y
-102	베이식	1	9500	SD(408P)로 좋은 화질 제공, 스마트폰,태블릿,컴퓨터 또는 TV로 시청.  Y
-104	스탠다드	2	12500	풀 HD(1080p)로 뛰어난 화질 제공. 스마트폰, 태블릿, 컴퓨터 또는 TV로 시청.  Y
+106	premium	4	14500	UHD(4K)및 HDR로 넷플릭스 최고 화질 제공. 스마트폰,태블릿,컴퓨터 또는 TV로 시청.	Y
+102	basic	1	9500	SD(408P)로 좋은 화질 제공, 스마트폰,태블릿,컴퓨터 또는 TV로 시청.	Y
+104	standard	2	12500	풀 HD(1080p)로 뛰어난 화질 제공. 스마트폰, 태블릿, 컴퓨터 또는 TV로 시청.	Y
